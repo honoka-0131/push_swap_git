@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 18:32:10 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:02:59 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include	"printf/ft_printf.h"
 #include	"push_swap.h"
 #include	<stdlib.h>
+#include 	<string.h>
 
 int	check_argv_two(char **argv)
 {
@@ -78,8 +79,13 @@ void	add_list_back(t_list **list, int data)
 	tmp = *list;
 //	ft_printf("tmp->data = %d\n", tmp->data);
 	while (tmp->next != NULL)
+	{
 		tmp = tmp->next;
+	}
 	new = malloc(sizeof(t_list));
+	if (!new)
+		return;
+	// printf("data = %d\n", data);
 	new->data = data;
 	new->next = NULL;
 	tmp->next = new;
@@ -89,23 +95,28 @@ void	add_list_back(t_list **list, int data)
 t_list	*make_stack_a(char **argv)
 {
 	t_list	*stack_a;
+	t_list	*tmp;
 	size_t	i;
 
 	if (check_argv_one(argv) < 0)
 		return (NULL);
 	stack_a = malloc(sizeof(t_list));
+	tmp = malloc(sizeof(t_list));
 	if (stack_a == NULL)
 		return (NULL);
 	stack_a->data = ft_atoi(argv[1]);
 	stack_a->prev = NULL;
 	stack_a->next = NULL;
+	tmp->data = ft_atoi(argv[1]);
+	tmp->prev = NULL;
+	tmp->next = NULL;
 	i = 2;
 //	ft_printf("argv[0] %s [1] %s [2]%s\n", argv[0], argv[1], argv[2]);//ここはOK
 //	ft_printf("stack_a %d\n", stack_a->data);
-
 	while (argv[i])
 	{
 		add_list_back(&stack_a, ft_atoi(argv[i]));
+		add_list_back(&tmp, ft_atoi(argv[i]));
 		i++;
 	}
 	i = 0;
@@ -114,8 +125,8 @@ t_list	*make_stack_a(char **argv)
 	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)
 	{
-		printf("stack_a %zu = %d\n",i, stack_a->data);
-		stack_a = stack_a->next;
+		printf("stack_a %zu = %d\n",i, tmp->data);
+		tmp = tmp->next;
 		i++;
 	}
 	printf("fuga\n");

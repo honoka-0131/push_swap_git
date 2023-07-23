@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 14:01:22 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 18:29:28 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:06:07 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,27 +76,57 @@ t_list	*compression(t_list **list)
 {
 	int		*array;
 	int		*sort;
+	t_list	*tmp;
 	size_t	i;
-	size_t	list_size = listsize(*list);
+
 	printf("fuga\n");
 	i = 0;
 //	ft_printf("check1\n");
+	printf("listsize(*list) = %zu\n", listsize(*list));
 	array = malloc(sizeof(int) * listsize(*list));
-	if (array == NULL)
+	tmp = malloc(sizeof(t_list));
+	if (array == NULL || tmp == NULL)
 		return (NULL);
-	while (i < listsize(*list))
+	
+	// tmp->data = (*list)->data;
+	tmp->prev = NULL;
+	tmp->next = NULL;
+
+	printf("fugafuga\n");
+	printf("%zu\n",listsize(*list));
+	// while (i < listsize(*list))
+	// {
+	// 	printf("list[%zu] = %d\n", i, (*list)->data);
+	// 	i++;
+	// }
+	size_t list_size = listsize(*list);
+	while ( i < list_size)
 	{
-		array[i] = (*list)->data;
-		i ++;
-		*list = (*list)->next;
-	}
-	printf("list_size = %zu\n", list_size);
-	while (i < list_size)
-	{
-		printf("%d\n", (*list)->data);
+		printf("%zu : list = %d\n", i, (*list)->data);
+		printf("%zu : tmp = %d\n", i, tmp->data);
+		add_list_back(&tmp, (*list)->data);
+		printf("tmp add\n");
+		(*list) = (*list)->next;
+		tmp = tmp->next;
 		i++;
 	}
-	// ft_printf("array %d %d %d %d %d\n", );
+	while ( i > 0)
+	{
+		tmp = tmp->prev;
+		i--;
+	}
+
+	printf("hoge\n");
+	i = 0;
+	while (i < list_size)
+	{
+		printf("tmp->data = %d\n", tmp->next->data);
+		array[i] = tmp->next->data;
+		i++;
+		tmp = tmp->next;
+	}
+
+	ft_printf("array %d %d %d %d %d\n", array[0], array[1], array[2], array[3], array[4]);
 	sort = make_sort(array, listsize(*list));
 	ft_printf("sort %d %d %d %d %d\n", sort[0], sort[1], sort[2], sort[3], sort[4]);
 	return (NULL);
