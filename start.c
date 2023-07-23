@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 20:02:59 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:16:12 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ t_list	*make_stack_a(char **argv)
 	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)
 	{
-		printf("stack_a %zu = %d\n",i, tmp->data);
 		tmp = tmp->next;
 		i++;
 	}

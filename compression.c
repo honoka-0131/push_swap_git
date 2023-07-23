@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 14:01:22 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 20:06:07 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:15:00 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ t_list	*compression(t_list **list)
 	t_list	*tmp;
 	size_t	i;
 
-	printf("fuga\n");
 	i = 0;
-//	ft_printf("check1\n");
-	printf("listsize(*list) = %zu\n", listsize(*list));
 	array = malloc(sizeof(int) * listsize(*list));
 	tmp = malloc(sizeof(t_list));
 	if (array == NULL || tmp == NULL)
@@ -92,20 +89,10 @@ t_list	*compression(t_list **list)
 	tmp->prev = NULL;
 	tmp->next = NULL;
 
-	printf("fugafuga\n");
-	printf("%zu\n",listsize(*list));
-	// while (i < listsize(*list))
-	// {
-	// 	printf("list[%zu] = %d\n", i, (*list)->data);
-	// 	i++;
-	// }
 	size_t list_size = listsize(*list);
 	while ( i < list_size)
 	{
-		printf("%zu : list = %d\n", i, (*list)->data);
-		printf("%zu : tmp = %d\n", i, tmp->data);
 		add_list_back(&tmp, (*list)->data);
-		printf("tmp add\n");
 		(*list) = (*list)->next;
 		tmp = tmp->next;
 		i++;
@@ -116,11 +103,9 @@ t_list	*compression(t_list **list)
 		i--;
 	}
 
-	printf("hoge\n");
 	i = 0;
 	while (i < list_size)
 	{
-		printf("tmp->data = %d\n", tmp->next->data);
 		array[i] = tmp->next->data;
 		i++;
 		tmp = tmp->next;
