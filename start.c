@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 20:16:12 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/26 18:53:23 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,19 @@ int	check_argv_one(char **argv)
 	return (check_argv_two(argv));
 }
 
+t_list	*create_list(int data)
+{
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
+	if (list == NULL)
+		return (NULL);
+	list->data = data;
+	list->prev = NULL;
+	list->next = NULL;
+	return (list);
+}
+
 void	add_list_back(t_list **list, int data)
 {
 	t_list	*new;
@@ -82,41 +95,29 @@ void	add_list_back(t_list **list, int data)
 	{
 		tmp = tmp->next;
 	}
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return;
-	// printf("data = %d\n", data);
-	new->data = data;
-	new->next = NULL;
+	new = create_list(data);
 	tmp->next = new;
 	new->prev = tmp;
 }
 
+
 t_list	*make_stack_a(char **argv)
 {
 	t_list	*stack_a;
-	t_list	*tmp;
+	// t_list	*tmp;
 	size_t	i;
 
 	if (check_argv_one(argv) < 0)
 		return (NULL);
-	stack_a = malloc(sizeof(t_list));
-	tmp = malloc(sizeof(t_list));
-	if (stack_a == NULL)
-		return (NULL);
-	stack_a->data = ft_atoi(argv[1]);
-	stack_a->prev = NULL;
-	stack_a->next = NULL;
-	tmp->data = ft_atoi(argv[1]);
-	tmp->prev = NULL;
-	tmp->next = NULL;
+	stack_a = create_list(ft_atoi(argv[1]));
+	// tmp = create_list(argv[1]);
 	i = 2;
 //	ft_printf("argv[0] %s [1] %s [2]%s\n", argv[0], argv[1], argv[2]);//ここはOK
 //	ft_printf("stack_a %d\n", stack_a->data);
 	while (argv[i])
 	{
 		add_list_back(&stack_a, ft_atoi(argv[i]));
-		add_list_back(&tmp, ft_atoi(argv[i]));
+		// add_list_back(&tmp, ft_atoi(argv[i]));
 		i++;
 	}
 	i = 0;
@@ -125,7 +126,7 @@ t_list	*make_stack_a(char **argv)
 	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)
 	{
-		tmp = tmp->next;
+		// tmp = tmp->next;
 		i++;
 	}
 	printf("fuga\n");
