@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/23 18:04:36 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/27 18:36:24 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main(int argc, char *argv[])
 //	t_list	*stack_b;使ってないって怒られるから一旦消す
 
 	if (argc == 1)
-		return (0);
-	
+		return (0);	
 	stack_a = make_stack_a(argv);
 	if (stack_a == NULL)
 		return (0);

@@ -1,7 +1,7 @@
 NAME = push_swap
 LIBFT = ./libft/libft.a
 PRINTF = ./printf/libftprintf.a
-SRC = main.c start.c compression.c
+SRC = main.c start.c compression.c list.c
 OBJ = $(SRC:%.c=%.o)
 CC = cc
 CFRAGS = -Wall -Wextra -Werror 

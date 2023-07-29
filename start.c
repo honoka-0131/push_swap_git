@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/26 18:53:23 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/27 18:37:46 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,17 @@ t_list	*make_stack_a(char **argv)
 	{
 		add_list_back(&stack_a, ft_atoi(argv[i]));
 		// add_list_back(&tmp, ft_atoi(argv[i]));
-		i++;
+		i ++;
 	}
 	i = 0;
 	size_t	list_size = listsize(stack_a);
 //	return (NULL); //一旦確認のやつ
-	printf("listsize = %zu\n", listsize(stack_a));
+//	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)
 	{
 		// tmp = tmp->next;
-		i++;
+		i ++;
 	}
-	printf("fuga\n");
+//	printf("fuga\n");
 	return (compression(&stack_a));
 }
