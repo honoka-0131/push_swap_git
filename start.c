@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/27 18:37:46 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 16:47:39 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	add_list_back(t_list **list, int data)
 
 //	ft_printf("check!!!!\n");
 	tmp = *list;
-//	ft_printf("tmp->data = %d\n", tmp->data);
+	ft_printf("addbackcheck tmp->comp = %d\n", tmp->comp);
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
@@ -98,6 +98,7 @@ void	add_list_back(t_list **list, int data)
 	new = create_list(data);
 	tmp->next = new;
 	new->prev = tmp;
+	printf("ここで確認 list->comp %d\n", (*list)->comp);
 }
 
 
@@ -106,6 +107,7 @@ t_list	*make_stack_a(char **argv)
 	t_list	*stack_a;
 	// t_list	*tmp;
 	size_t	i;
+	size_t	list_size;
 
 	if (check_argv_one(argv) < 0)
 		return (NULL);
@@ -121,7 +123,7 @@ t_list	*make_stack_a(char **argv)
 		i ++;
 	}
 	i = 0;
-	size_t	list_size = listsize(stack_a);
+	list_size = listsize(stack_a);
 //	return (NULL); //一旦確認のやつ
 //	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)

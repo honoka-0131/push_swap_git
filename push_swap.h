@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:41:21 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/29 12:37:10 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/29 19:26:39 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct	s_list
 t_list	*make_stack_a(char **argv);
 t_list	*compression(t_list **list);
 t_list	*listfront(t_list *list);
-void	add_list_back(t_list **list, int data);
+void	add_list_back(t_list **list, int comp);
+void	add_list_front(t_list **list, int comp);
+void	sort_three_data(t_list **list);
+void	action_rr(t_list **list);
+void	action_r(t_list **list);
+void	action_s(t_list **list);
 size_t	listsize(t_list *list);
 #endif

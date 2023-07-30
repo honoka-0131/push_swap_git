@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:53:32 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/29 14:27:23 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/29 19:01:48 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,22 @@ t_list	*listfront(t_list *list)
 //	tmp = tmp->next;
 //	printf("check %d\n", tmp->data);
 	return (tmp);
+}
+
+
+
+void	add_list_front(t_list **list, int comp)
+{
+	t_list	*new;
+	t_list	*tmp;
+
+	tmp = *list;
+	while (tmp->prev != NULL)
+		tmp = tmp->prev;
+	new = malloc(sizeof(t_list));
+	new->comp = comp;
+	new->next = tmp;
+	tmp->prev = new;
+	new->prev = NULL;
+	return ;
 }
