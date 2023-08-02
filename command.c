@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 18:28:37 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/02 13:35:42 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,18 @@ void	action_p(t_list **list_one, t_list **list_two)
 	(*list_two)->prev = tmp;
 //	printf("p check 4\n");
 	*list_two = (*list_two)->prev;
+	return ;
+}
+
+void	action_swap_two(t_list **list)
+{
+	t_list	*tmp;
+
+	tmp = *list;
+	*list = (*list)->next;
+	(*list)->next = tmp;
+	(*list)->prev = NULL;
+	tmp->prev = *list;
+	tmp->next = NULL;
 	return ;
 }

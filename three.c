@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:04:41 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 18:34:24 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/02 13:07:25 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	sort_three_data(t_list **list)
 	first_num = (*list)->comp;
 	second_num = (*list)->next->comp;
 	*list = (*list)->next->next;
+	printf("3sort check firnum %d\n", first_num);
 	while (!(first_num < second_num && second_num < (*list)->comp))
 	{
 		if (second_num > first_num && second_num > (*list)->comp)
