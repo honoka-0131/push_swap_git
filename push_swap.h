@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:41:21 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/29 19:26:39 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 17:44:26 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ t_list	*listfront(t_list *list);
 void	add_list_back(t_list **list, int comp);
 void	add_list_front(t_list **list, int comp);
 void	sort_three_data(t_list **list);
+void	sort_under_seven(t_list **stack_a, t_list **stack_b, size_t listsize);
 void	action_rr(t_list **list);
 void	action_r(t_list **list);
 void	action_s(t_list **list);
+void	action_p(t_list **list_one, t_list **list_two);
 size_t	listsize(t_list *list);
 #endif

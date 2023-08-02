@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 16:47:39 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 17:03:12 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ void	add_list_back(t_list **list, int data)
 	t_list	*new;
 	t_list	*tmp;
 
-//	ft_printf("check!!!!\n");
 	tmp = *list;
-	ft_printf("addbackcheck tmp->comp = %d\n", tmp->comp);
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
@@ -98,7 +96,6 @@ void	add_list_back(t_list **list, int data)
 	new = create_list(data);
 	tmp->next = new;
 	new->prev = tmp;
-	printf("ここで確認 list->comp %d\n", (*list)->comp);
 }
 
 
@@ -114,8 +111,6 @@ t_list	*make_stack_a(char **argv)
 	stack_a = create_list(ft_atoi(argv[1]));
 	// tmp = create_list(argv[1]);
 	i = 2;
-//	ft_printf("argv[0] %s [1] %s [2]%s\n", argv[0], argv[1], argv[2]);//ここはOK
-//	ft_printf("stack_a %d\n", stack_a->data);
 	while (argv[i])
 	{
 		add_list_back(&stack_a, ft_atoi(argv[i]));
@@ -124,13 +119,10 @@ t_list	*make_stack_a(char **argv)
 	}
 	i = 0;
 	list_size = listsize(stack_a);
-//	return (NULL); //一旦確認のやつ
-//	printf("listsize = %zu\n", listsize(stack_a));
 	while (i < list_size)
 	{
 		// tmp = tmp->next;
 		i ++;
 	}
-//	printf("fuga\n");
 	return (compression(&stack_a));
 }

@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:53:32 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/29 19:01:48 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 17:05:00 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ t_list	*listfront(t_list *list)
 	{
 		tmp = tmp->prev;
 	}
-//	tmp = tmp->next;
-//	printf("check %d\n", tmp->data);
 	return (tmp);
 }
 

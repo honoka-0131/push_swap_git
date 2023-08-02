@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 18:28:37 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 18:21:43 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,11 @@ void	action_p(t_list **list_one, t_list **list_two)
 //	printf("p check 1\n");
 	(*list_one)->prev = NULL;
 //	printf("p check 2\n");
-	if (*list_two == NULL)
-	{
-		*list_two = tmp;
-		(*list_two)->next = NULL;
-		return ;
-	}
 	tmp->next = *list_two;
-//	printf("p tmp->comp = %d\n", tmp->comp);
-//	printf("p list_two->comp = %d\n", (*list_two)->comp);
+	printf("p tmp->comp = %d\n", tmp->comp);
+	printf("p list_two->comp = %d\n", (*list_two)->comp);
 	(*list_two)->prev = tmp;
-//	printf("p check 4\n");
+	printf("p check 4\n");
 	*list_two = (*list_two)->prev;
 	return ;
 }

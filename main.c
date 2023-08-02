@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/29 19:38:00 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/07/30 17:31:30 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
-//	t_list	*stack_b;使ってないって怒られるから一旦消す
+	t_list	*stack_b;
 
 	if (argc == 1)
 		return (0);	
 	stack_a = make_stack_a(argv);
 	if (stack_a == NULL)
 		return (0);
-	// ここで数字のダブりチェック、マロックエラーのやつと座標圧縮までやる。引っかかった時点でNULLで弾く、物によってはエラー書いてね
-	printf("listsize %zu\n", listsize(stack_a));
 	if (listsize(stack_a) <= 3)
 	{
-		printf("ここはOK?\n");
 		sort_three_data(&stack_a);
+		return (0);
+	}
+	else if (listsize(stack_a) <= 6)
+	{
+		sort_under_seven(&stack_a, &stack_b, listsize(stack_a));
 		return (0);
 	}
 }
