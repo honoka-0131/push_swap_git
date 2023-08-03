@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:41:21 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/02 17:01:48 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/03 20:53:59 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_list
 	struct s_list	*prev;
 	int				data;
 	int				comp;
+	int				layer;
 }				t_list;
 
 t_list	*make_stack_a(char **argv);
