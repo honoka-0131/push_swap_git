@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 17:31:30 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/02 17:02:26 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ int	main(int argc, char *argv[])
 		sort_under_seven(&stack_a, &stack_b, listsize(stack_a));
 		return (0);
 	}
+	else
+		sort_over_seven(&stack_a, &stack_b, listsize(stack_a));
 }
