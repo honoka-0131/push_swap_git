@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/07/30 17:03:12 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/03 21:47:39 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_list	*create_list(int data)
 	return (list);
 }
 
-void	add_list_back(t_list **list, int data)
+void	add_list_back(t_list **list, int data, int layer)
 {
 	t_list	*new;
 	t_list	*tmp;
@@ -96,6 +96,7 @@ void	add_list_back(t_list **list, int data)
 	new = create_list(data);
 	tmp->next = new;
 	new->prev = tmp;
+	new->layer = layer;
 }
 
 
@@ -113,7 +114,7 @@ t_list	*make_stack_a(char **argv)
 	i = 2;
 	while (argv[i])
 	{
-		add_list_back(&stack_a, ft_atoi(argv[i]));
+		add_list_back(&stack_a, ft_atoi(argv[i]), 0);
 		// add_list_back(&tmp, ft_atoi(argv[i]));
 		i ++;
 	}

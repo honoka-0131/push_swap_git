@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/02 13:35:42 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/03 21:44:33 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 void	action_rr(t_list **list)
 {
 	t_list	*tmp;
+//	int		layer;
 
+//	layer = (*list)->layer;
 	while ((*list)->next != NULL)
 		*list = (*list)->next;
 	tmp = *list;
+//	printf("layer %d\n", tmp->layer);
 	*list = (*list)->prev;
 	(*list)->next = NULL;
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
-	add_list_front(list, tmp->comp);
+	add_list_front(list, tmp->comp, tmp->layer);
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
 	return ;
@@ -41,7 +44,7 @@ void	action_r(t_list **list)
 	(*list)->prev = NULL;
 	while ((*list)->next != NULL)
 		*list = (*list)->next;
-	add_list_back(list, tmp->comp);
+	add_list_back(list, tmp->comp, tmp->layer);
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
 	return ;
