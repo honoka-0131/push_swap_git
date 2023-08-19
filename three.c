@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:04:41 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/03 20:09:51 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/19 12:57:53 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,28 @@
 #include	"libft/libft.h"
 #include	"printf/ft_printf.h"
 
+void	sort_two_data(t_list ***list)
+{
+	int	tmp;
+
+	if ((**list)->comp > (**list)->next->comp)
+	{
+		tmp = (**list)->comp;
+		(**list)->comp = (**list)->next->comp;
+		(**list)->next->comp = tmp;
+	}
+}
+
 void	sort_three_data(t_list **list)
 {
 	int	first_num;
 	int	second_num;
 
+	if (listsize(*list) == 2)
+	{
+		sort_two_data(&list);
+		return ;
+	}
 	first_num = (*list)->comp;
 	second_num = (*list)->next->comp;
 	*list = (*list)->next->next;
