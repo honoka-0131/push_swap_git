@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:37:23 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 15:26:34 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 15:51:56 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	stack_b_rr(t_list **stack_b, int rr_layer)
 		if ((*stack_b)->layer != rr_layer)
 			break ;
 		action_rr(stack_b);
+		ft_printf("rrb\n");
 	}
 	*stack_b = listfront(*stack_b);
 	return ;
@@ -153,24 +154,24 @@ void	check_and_push(t_list **stack_a, t_list **stack_b, int num, int layer)
 			action_p(stack_a, stack_b);
 			ft_printf("pb\n");
 			(*stack_b)->layer = layer - 1;
-			print_ps_2(stack_a, stack_b);
+	//		print_ps_2(stack_a, stack_b);
 			if ((*stack_b)->comp >= num_half && (*stack_b)->next != NULL)
 			{
 				(*stack_b)->layer = layer;
 				action_r(stack_b);
 				ft_printf("rb\n");
-				print_ps_2(stack_a, stack_b);
+	//			print_ps_2(stack_a, stack_b);
 			}
 		}
 		else
 		{
 			action_r(stack_a);
 			ft_printf("ra\n");
-			print_ps_2(stack_a, stack_b);
+	//		print_ps_2(stack_a, stack_b);
 		}
 //		if (listsize(*stack_a) <= 3)//あかんパターンtimesの理由ここ
 //			break ;
-		print_ps_2(stack_a, stack_b);
+//		print_ps_2(stack_a, stack_b);
 		i ++;
 	}
 	stack_b_rr(stack_b, layer);
@@ -226,7 +227,7 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 				ft_printf("pa\n");
 				min --;
 			}
-	//		print_ps_2(stack_a, stack_b);
+//			print_ps_2(stack_a, stack_b);
 		}
 		layer = next_layer(stack_b);
 	}
@@ -239,14 +240,14 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 		{
 			action_p(stack_b, stack_a);
 			ft_printf("pa\n");
-			print_ps_2(stack_a, stack_b);
+//			print_ps_2(stack_a, stack_b);
 			min --;
 		}
 		else
 		{
 			action_r(stack_b);
 			ft_printf("rb\n");
-			print_ps_2(stack_a, stack_b);
+//			print_ps_2(stack_a, stack_b);
 		}
 	}
 	ft_printf("pa\n");
