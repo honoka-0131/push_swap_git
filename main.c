@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 11:18:53 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 16:12:46 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include	"push_swap.h"
 #include	<stdlib.h>
 
-void print_stack2(t_list **stack)
+void	print_stack2(t_list **stack)
 {
-	t_list *list;
+	t_list	*list;
 
 	list = *stack;
 	while (list != NULL)
@@ -27,7 +27,6 @@ void print_stack2(t_list **stack)
 	}
 	puts("");
 }
-
 
 int	main(int argc, char *argv[])
 {
@@ -47,7 +46,7 @@ int	main(int argc, char *argv[])
 	}
 	else if (listsize(stack_a) <= 6)
 	{
-		sort_under_seven(&stack_a, &stack_b, listsize(stack_a));
+		sort_under_seven(&stack_a, &stack_b);
 		return (0);
 	}
 	else

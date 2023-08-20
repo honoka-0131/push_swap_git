@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:18:03 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/03 21:47:39 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 16:15:48 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 
 int	check_argv_two(char **argv)
 {
-// こっちでーー１ーとか重複弾く
-// まず重複だけ考えよう
 	size_t	i;
 	size_t	j;
-	
+
 	i = 1;
 	j = i + 1;
 	while (argv[i])
@@ -44,8 +42,6 @@ int	check_argv_two(char **argv)
 
 int	check_argv_one(char **argv)
 {
-// 弾くもの　数字とマイナス以外
-// 弾けないもの　ーー１ーとか、重複（１　２　２　ー　４２ー）とか無理
 	size_t	i;
 	size_t	j;
 
@@ -99,30 +95,25 @@ void	add_list_back(t_list **list, int data, int layer)
 	new->layer = layer;
 }
 
-
 t_list	*make_stack_a(char **argv)
 {
 	t_list	*stack_a;
-	// t_list	*tmp;
 	size_t	i;
 	size_t	list_size;
 
 	if (check_argv_one(argv) < 0)
 		return (NULL);
 	stack_a = create_list(ft_atoi(argv[1]));
-	// tmp = create_list(argv[1]);
 	i = 2;
 	while (argv[i])
 	{
 		add_list_back(&stack_a, ft_atoi(argv[i]), 0);
-		// add_list_back(&tmp, ft_atoi(argv[i]));
 		i ++;
 	}
 	i = 0;
 	list_size = listsize(stack_a);
 	while (i < list_size)
 	{
-		// tmp = tmp->next;
 		i ++;
 	}
 	return (compression(&stack_a));

@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 13:22:45 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 16:02:06 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 void	action_rr(t_list **list)
 {
 	t_list	*tmp;
-//	int		layer;
 
-//	layer = (*list)->layer;
 	while ((*list)->next != NULL)
 		*list = (*list)->next;
 	tmp = *list;
-//	printf("layer %d\n", tmp->layer);
 	*list = (*list)->prev;
 	(*list)->next = NULL;
 	while ((*list)->prev != NULL)
@@ -66,7 +63,6 @@ void	action_s(t_list **list)
 	(*list)->comp = tmp_one;
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
-//	printf("comp next %p, next->%p, \n", (*list)->next, (*list)->next->next);
 	return ;
 }
 
@@ -76,9 +72,7 @@ void	action_p(t_list **list_one, t_list **list_two)
 
 	tmp = *list_one;
 	*list_one = (*list_one)->next;
-//	printf("p check 1\n");
 	(*list_one)->prev = NULL;
-//	printf("p check 2\n");
 	if (*list_two == NULL)
 	{
 		*list_two = tmp;
@@ -86,10 +80,7 @@ void	action_p(t_list **list_one, t_list **list_two)
 		return ;
 	}
 	tmp->next = *list_two;
-//	printf("p tmp->comp = %d\n", tmp->comp);
-//	printf("p list_two->comp = %d\n", (*list_two)->comp);
 	(*list_two)->prev = tmp;
-//	printf("p check 4\n");
 	*list_two = (*list_two)->prev;
 	return ;
 }
