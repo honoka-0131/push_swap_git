@@ -6,7 +6,7 @@
 /*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:37:23 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 14:29:00 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 15:26:34 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,28 @@ void	check_and_push_first(t_list **stack_a, t_list **stack_b, int num, int layer
 			action_p(stack_a, stack_b);
 			ft_printf("pb\n");
 			(*stack_b)->layer = layer;
-			if ((*stack_b)->comp <= num_half && (*stack_b)->next != NULL)
+	//		print_ps_2(stack_a, stack_b);
+			if ((*stack_b)->comp <= num_half)
 			{
-				(*stack_b)->layer = (*stack_b)->layer - 1;
-				action_r(stack_b);
-				ft_printf("rb\n");
+				if ((*stack_b)->next != NULL)
+				{
+					(*stack_b)->layer = (*stack_b)->layer - 1;
+					action_r(stack_b);
+					ft_printf("rb\n");
+		//			print_ps_2(stack_a, stack_b);
+				}
+				else	
+					(*stack_b)->layer = (*stack_b)->layer - 1;
 			}
 		}
 		else
 		{
 			action_r(stack_a);
 			ft_printf("ra\n");
+		//	print_ps_2(stack_a, stack_b);
 		}
 		i ++;
-		print_ps_2(stack_a, stack_b);
+//		print_ps_2(stack_a, stack_b);
 //		printf("今のstack_a %d\n", (*stack_a)->comp);
 	}
 	return ;
@@ -136,7 +144,7 @@ void	check_and_push(t_list **stack_a, t_list **stack_b, int num, int layer)
 //	printf("num = %d half = %d  listsize = %zu\n", num, num_half, listsize(*stack_a));
 //	printf("a = %d %d %d\n", (*stack_a)->comp, (*stack_a)->next->comp, (*stack_a)->next->next->comp);
 	list_size = listsize(*stack_a);
-	printf("ここのかくにん\n");
+//	printf("ここのかくにん\n");
 	while (i < list_size)
 	{
 //		printf("stack_a %d   b %d\n", (*stack_a)->comp, (*stack_b)->comp);
@@ -145,17 +153,20 @@ void	check_and_push(t_list **stack_a, t_list **stack_b, int num, int layer)
 			action_p(stack_a, stack_b);
 			ft_printf("pb\n");
 			(*stack_b)->layer = layer - 1;
+			print_ps_2(stack_a, stack_b);
 			if ((*stack_b)->comp >= num_half && (*stack_b)->next != NULL)
 			{
 				(*stack_b)->layer = layer;
 				action_r(stack_b);
 				ft_printf("rb\n");
+				print_ps_2(stack_a, stack_b);
 			}
 		}
 		else
 		{
 			action_r(stack_a);
 			ft_printf("ra\n");
+			print_ps_2(stack_a, stack_b);
 		}
 //		if (listsize(*stack_a) <= 3)//あかんパターンtimesの理由ここ
 //			break ;
@@ -186,7 +197,8 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 //	printf("check! min = %d (*stack_b)->comp = %d\n", min, (*stack_b)->comp);
 	while (layer != 0)
 	{
-//		printf("check! min = %d (*stack_b)->comp = %d layer %d\n", min, (*stack_b)->comp, (*stack_b)->layer);
+//		printf("check! min = %d layer %d\n", min, layer);
+//		printf("b: %d %d %d\n", (*stack_b)->layer, (*stack_b)->next->layer, (*stack_b)->next->next->layer);
 		while ((*stack_b)->layer == layer)
 		{
 			if ((*stack_b)->comp == min)
@@ -199,14 +211,14 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 				action_r(stack_b);
 				ft_printf("rb\n");
 			}
-			print_ps_2(stack_a, stack_b);
+	//		print_ps_2(stack_a, stack_b);
 		}
 		min --;
 		while (listback(*stack_b)->layer == layer)
 		{
 			*stack_b = listfront(*stack_b);
 			action_rr(stack_b);
-//			printf("stack_b comp = %d min = %d\n", (*stack_b)->comp, min);
+//			printf("min = %d layer %d\n", min, layer);
 			ft_printf("rrb\n");
 			if ((*stack_b)->comp == min)
 			{
@@ -214,25 +226,27 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 				ft_printf("pa\n");
 				min --;
 			}
-			print_ps_2(stack_a, stack_b);
+	//		print_ps_2(stack_a, stack_b);
 		}
 		layer = next_layer(stack_b);
 	}
 //		printf("[check]\na %d %d %d %d %d %d %d\n", (*stack_a)->comp, (*stack_a)->next->comp, (*stack_a)->next->next->comp, (*stack_a)->next->next->next->comp, (*stack_a)->next->next->next->next->comp, (*stack_a)->next->next->next->next->next->comp, (*stack_a)->next->next->next->next->next->next->comp);
 //		printf("b %d %d\n", (*stack_b)->comp, (*stack_b)->next->comp);
-//	while (listsize(*stack_b) > 1)
+	while (listsize(*stack_b) > 1)
 	{
 //		printf("!check!\n layer = %d min = %d\n", layer, min);
 		if ((*stack_b)->comp == min)
 		{
 			action_p(stack_b, stack_a);
 			ft_printf("pa\n");
+			print_ps_2(stack_a, stack_b);
 			min --;
 		}
 		else
 		{
 			action_r(stack_b);
 			ft_printf("rb\n");
+			print_ps_2(stack_a, stack_b);
 		}
 	}
 	ft_printf("pa\n");
@@ -262,7 +276,7 @@ void	sort_over_seven(t_list **stack_a, t_list **stack_b)
 //	printf("a %d %d\n", (*stack_a)->comp, (*stack_a)->next->comp);
 //	printf("b %d %d %d %d %d %d %d %d\n", (*stack_b)->layer, (*stack_b)->next->layer, (*stack_b)->next->next->layer, (*stack_b)->next->next->next->layer, (*stack_b)->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->next->next->layer);
 	sort_three_data(stack_a);
-	print_ps_2(stack_a, stack_b);
+//	print_ps_2(stack_a, stack_b);
 //	printf("ここのチェック\n");
 //	printf("a %d\n", (*stack_a)->next->comp);
 	push_layer(stack_a, stack_b, layer, (*stack_a)->comp - 1);
