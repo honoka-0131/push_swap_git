@@ -3,16 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   over_seven.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:37:23 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/19 16:24:54 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 14:29:00 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 #include	"libft/libft.h"
 #include	"printf/ft_printf.h"
+
+void print_stack_2(t_list **stack)
+{
+	t_list *list;
+
+	list = *stack;
+	while (list != NULL)
+	{
+		printf("%d ", list->comp);
+		list = list->next;
+	}
+	puts("");
+}
+
+void print_ps_2(t_list **stack_a, t_list **stack_b)
+{
+	printf("A: ");
+	print_stack_2(stack_a);
+	printf("B: ");
+	print_stack_2(stack_b);
+}
 
 int	find_max(t_list **stack_a)
 {
@@ -82,7 +103,7 @@ void	check_and_push_first(t_list **stack_a, t_list **stack_b, int num, int layer
 			ft_printf("ra\n");
 		}
 		i ++;
-	//	*stack_a = (*stack_a)->next;
+		print_ps_2(stack_a, stack_b);
 //		printf("今のstack_a %d\n", (*stack_a)->comp);
 	}
 	return ;
@@ -112,9 +133,10 @@ void	check_and_push(t_list **stack_a, t_list **stack_b, int num, int layer)
 
 	i = 0;
 	num_half = (num + find_max(stack_b)) / 2;
-	printf("num = %d half = %d  listsize = %zu\n", num, num_half, listsize(*stack_a));
+//	printf("num = %d half = %d  listsize = %zu\n", num, num_half, listsize(*stack_a));
 //	printf("a = %d %d %d\n", (*stack_a)->comp, (*stack_a)->next->comp, (*stack_a)->next->next->comp);
 	list_size = listsize(*stack_a);
+	printf("ここのかくにん\n");
 	while (i < list_size)
 	{
 //		printf("stack_a %d   b %d\n", (*stack_a)->comp, (*stack_b)->comp);
@@ -137,6 +159,7 @@ void	check_and_push(t_list **stack_a, t_list **stack_b, int num, int layer)
 		}
 //		if (listsize(*stack_a) <= 3)//あかんパターンtimesの理由ここ
 //			break ;
+		print_ps_2(stack_a, stack_b);
 		i ++;
 	}
 	stack_b_rr(stack_b, layer);
@@ -163,7 +186,7 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 //	printf("check! min = %d (*stack_b)->comp = %d\n", min, (*stack_b)->comp);
 	while (layer != 0)
 	{
-		printf("check! min = %d (*stack_b)->comp = %d layer %d\n", min, (*stack_b)->comp, (*stack_b)->layer);
+//		printf("check! min = %d (*stack_b)->comp = %d layer %d\n", min, (*stack_b)->comp, (*stack_b)->layer);
 		while ((*stack_b)->layer == layer)
 		{
 			if ((*stack_b)->comp == min)
@@ -176,6 +199,7 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 				action_r(stack_b);
 				ft_printf("rb\n");
 			}
+			print_ps_2(stack_a, stack_b);
 		}
 		min --;
 		while (listback(*stack_b)->layer == layer)
@@ -190,6 +214,7 @@ void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 				ft_printf("pa\n");
 				min --;
 			}
+			print_ps_2(stack_a, stack_b);
 		}
 		layer = next_layer(stack_b);
 	}
@@ -237,7 +262,8 @@ void	sort_over_seven(t_list **stack_a, t_list **stack_b)
 //	printf("a %d %d\n", (*stack_a)->comp, (*stack_a)->next->comp);
 //	printf("b %d %d %d %d %d %d %d %d\n", (*stack_b)->layer, (*stack_b)->next->layer, (*stack_b)->next->next->layer, (*stack_b)->next->next->next->layer, (*stack_b)->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->next->layer, (*stack_b)->next->next->next->next->next->next->next->layer);
 	sort_three_data(stack_a);
-	printf("ここのチェック\n");
+	print_ps_2(stack_a, stack_b);
+//	printf("ここのチェック\n");
 //	printf("a %d\n", (*stack_a)->next->comp);
 	push_layer(stack_a, stack_b, layer, (*stack_a)->comp - 1);
 	return ;

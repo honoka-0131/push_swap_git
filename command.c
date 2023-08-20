@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/03 21:44:33 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 13:22:45 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	action_s(t_list **list)
 	(*list)->comp = tmp_one;
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
+//	printf("comp next %p, next->%p, \n", (*list)->next, (*list)->next->next);
 	return ;
 }
 

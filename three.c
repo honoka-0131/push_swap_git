@@ -6,7 +6,7 @@
 /*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:04:41 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/19 12:57:53 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/20 13:29:17 by hmakida          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	sort_two_data(t_list ***list)
 		tmp = (**list)->comp;
 		(**list)->comp = (**list)->next->comp;
 		(**list)->next->comp = tmp;
+		ft_printf("sa\n");
 	}
 }
 
@@ -66,4 +67,6 @@ void	sort_three_data(t_list **list)
 		*list = (*list)->next;		
 //		printf("fir %d sec %d (*list)comp %d\n", first_num, second_num, (*list)->comp);
 	}
+	while ((*list)->prev != NULL)
+		*list = (*list)->prev;
 }
