@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:02:06 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/26 23:33:38 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	action_p(t_list **list_one, t_list **list_two)
 	(*list_one)->prev = NULL;
 	if (*list_two == NULL)
 	{
+		// printf("ここのチェック\n");
 		*list_two = tmp;
 		(*list_two)->next = NULL;
 		return ;

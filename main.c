@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:12:46 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/26 23:32:40 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include	"push_swap.h"
 #include	<stdlib.h>
 
-void	print_stack2(t_list **stack)
+void	print_stack2(t_list *stack)
 {
 	t_list	*list;
 
-	list = *stack;
+	list = stack;
 	while (list != NULL)
 	{
 		printf("%d ", list->comp);
@@ -33,10 +33,13 @@ int	main(int argc, char *argv[])
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	(void)stack_b;
 	if (argc == 1)
-		return (0);	
+		return (0);
 	stack_a = make_stack_a(argv);
+	print_stack2(stack_a);
 	if (stack_a == NULL)
 		return (0);
 	if (listsize(stack_a) <= 3)

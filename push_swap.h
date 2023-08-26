@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:41:21 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:12:24 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/26 23:04:11 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	action_s(t_list **list);
 void	action_p(t_list **list_one, t_list **list_two);
 void	action_swap_two(t_list **list);
 size_t	listsize(t_list *list);
+int		show_stack(t_list *nil);
 #endif

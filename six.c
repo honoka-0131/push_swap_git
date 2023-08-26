@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   six.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:08:13 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:14:03 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/26 23:57:55 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,14 @@ void	sort_under_seven(t_list **stack_a, t_list **stack_b)
 		{
 			action_p(stack_a, stack_b);
 			ft_printf("pb\n");
+			// print_ps(stack_a, stack_b);
 			target ++;
 		}
 		else
 		{
 			action_r(stack_a);
 			ft_printf("ra\n");
+			// print_ps(stack_a, stack_b);
 		}
 	}
 	sort_stack_a(&stack_a);
@@ -96,7 +98,9 @@ void	sort_under_seven(t_list **stack_a, t_list **stack_b)
 	{
 		action_p(stack_b, stack_a);
 		ft_printf("pa\n");
+		// print_ps(stack_a, stack_b);
 	}
 	ft_printf("pa\n");
+	// print_ps(stack_a, stack_b);
 	return ;
 }

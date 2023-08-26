@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   over_seven.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <hmakida@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:37:23 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:07:29 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/26 23:13:09 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	print_stack_2(t_list **stack)
 	list = *stack;
 	while (list != NULL)
 	{
-		printf("%d ", list->comp);
+		printf("%d -", list->comp);
+		printf("%d \n", list->data);
 		list = list->next;
 	}
 	puts("");
