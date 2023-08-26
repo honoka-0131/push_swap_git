@@ -1,3 +1,5 @@
 .DS_Store
 *.o
 .Makefile.swp
+.checker_Mac
+.checker
