@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:37:23 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/26 23:13:09 by akihito          ###   ########.fr       */
+/*   Updated: 2023/08/27 14:50:13 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	push_first(t_list **stack_a, t_list **stack_b, int num, int layer)
 	i = 0;
 	num_half = num / 2;
 	list_size = listsize(*stack_a);
+	printf("%d\n", num_half);
 	while (i < list_size)
 	{
 		if ((*stack_a)->comp <= num)
@@ -175,10 +176,12 @@ int	next_layer(t_list **stack_b)
 
 void	push_layer(t_list **stack_a, t_list **stack_b, int layer, int min)
 {
+	// printf("layer = %d\n", layer);
 	while (layer != 0)
 	{
 		while ((*stack_b)->layer == layer)
 		{
+			// printf("(stack_b)->comp = %d\n", (*stack_b)->comp);
 			if ((*stack_b)->comp == min)
 			{
 				action_p(stack_b, stack_a);
@@ -231,12 +234,15 @@ void	sort_over_seven(t_list **stack_a, t_list **stack_b)
 	layer = 1;
 	max = find_max(stack_a);
 	min = find_min(stack_a);
+	printf("%d\n", (max + min) / 2);
 	push_first(stack_a, stack_b, (max + min) / 2, layer);
+	printf("after push_first\n");
 	max = find_max(stack_a);
 	min = find_min(stack_a);
 	layer += 2;
 	check_and_push(stack_a, stack_b, (max + min) / 2, layer);
 	sort_three_data(stack_a);
 	push_layer(stack_a, stack_b, layer, (*stack_a)->comp - 1);
+	printf("\x1b[31m %d\n\x1b[0m", g_cmd_count);
 	return ;
 }

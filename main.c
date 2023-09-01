@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:01:51 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/26 23:32:40 by akihito          ###   ########.fr       */
+/*   Updated: 2023/08/27 15:03:22 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	print_stack2(t_list *stack)
 
 int	main(int argc, char *argv[])
 {
+	g_cmd_count = 0;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
@@ -54,4 +55,5 @@ int	main(int argc, char *argv[])
 	}
 	else
 		sort_over_seven(&stack_a, &stack_b);
+	
 }

@@ -6,15 +6,15 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:41:21 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/26 23:04:11 by akihito          ###   ########.fr       */
+/*   Updated: 2023/08/27 15:10:36 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include	<stdlib.h>
 
-#include	<stdlib.h>
-
+int	g_cmd_count;//TODO 提出前に消す。使っているところも消す。
 typedef struct	s_list
 {
 	struct s_list	*next;

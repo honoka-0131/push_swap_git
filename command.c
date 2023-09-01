@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:35:45 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/26 23:33:38 by akihito          ###   ########.fr       */
+/*   Updated: 2023/08/27 15:05:42 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	action_rr(t_list **list)
 	add_list_front(list, tmp->comp, tmp->layer);
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
+	g_cmd_count++;
 	return ;
 }
 
@@ -44,6 +45,7 @@ void	action_r(t_list **list)
 	add_list_back(list, tmp->comp, tmp->layer);
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
+	g_cmd_count++;
 	return ;
 }
 
@@ -63,6 +65,7 @@ void	action_s(t_list **list)
 	(*list)->comp = tmp_one;
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
+	g_cmd_count++;
 	return ;
 }
 
@@ -75,7 +78,6 @@ void	action_p(t_list **list_one, t_list **list_two)
 	(*list_one)->prev = NULL;
 	if (*list_two == NULL)
 	{
-		// printf("ここのチェック\n");
 		*list_two = tmp;
 		(*list_two)->next = NULL;
 		return ;
@@ -83,6 +85,7 @@ void	action_p(t_list **list_one, t_list **list_two)
 	tmp->next = *list_two;
 	(*list_two)->prev = tmp;
 	*list_two = (*list_two)->prev;
+	g_cmd_count++;
 	return ;
 }
 
@@ -96,5 +99,6 @@ void	action_swap_two(t_list **list)
 	(*list)->prev = NULL;
 	tmp->prev = *list;
 	tmp->next = NULL;
+	g_cmd_count++;
 	return ;
 }

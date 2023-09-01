@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   three.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmakida <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:04:41 by hmakida           #+#    #+#             */
-/*   Updated: 2023/08/20 16:15:03 by hmakida          ###   ########.fr       */
+/*   Updated: 2023/08/27 14:46:51 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort_three_data(t_list **list)
 		first_num = (*list)->comp;
 		*list = (*list)->next;
 		second_num = (*list)->comp;
-		*list = (*list)->next;		
+		*list = (*list)->next;
 	}
 	while ((*list)->prev != NULL)
 		*list = (*list)->prev;
